@@ -9,7 +9,8 @@ package excecao;
  *
  * @author Marlon
  */
-public class PessoaisException extends Exception{
+
+    public class PessoaisException extends Exception{
 
     public PessoaisException() {
         super("Causa do erro: Desconhecida");
@@ -20,5 +21,5 @@ public class PessoaisException extends Exception{
     }
 
 
-   
 }
+
