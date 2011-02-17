@@ -102,5 +102,5 @@ public class GUIPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu menuRelatorio;
     private javax.swing.JMenu menuSair;
     // End of variables declaration//GEN-END:variables
-
+    private GUISobre guiSobre;
 }
