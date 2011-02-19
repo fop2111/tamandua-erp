@@ -5,6 +5,8 @@
 
 package despesaspessoais;
 
+import visao.gui.GUIPrincipal;
+
 /**
  *
  * @author Marlon
@@ -15,7 +17,9 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+      GUIPrincipal guiPrincipal = new GUIPrincipal();
+      guiPrincipal.setLocationRelativeTo(null);
+      guiPrincipal.setVisible(true);
     }
 
 }

@@ -40,8 +40,8 @@ public class GUIPrincipal extends javax.swing.JFrame {
         menuCEspeciePagamento = new javax.swing.JMenuItem();
         menuLancamento = new javax.swing.JMenu();
         menuRelatorio = new javax.swing.JMenu();
-        menuSair = new javax.swing.JMenu();
         menuInformacoes = new javax.swing.JMenu();
+        menuSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Contolar as Despesas Pessoais");
@@ -59,11 +59,16 @@ public class GUIPrincipal extends javax.swing.JFrame {
         menuRelatorio.setText("Relatórios");
         menuBar.add(menuRelatorio);
 
+        menuInformacoes.setText("Informações");
+        menuInformacoes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuInformacoesActionPerformed(evt);
+            }
+        });
+        menuBar.add(menuInformacoes);
+
         menuSair.setText("Sair");
         menuBar.add(menuSair);
-
-        menuInformacoes.setText("Informações");
-        menuBar.add(menuInformacoes);
 
         setJMenuBar(menuBar);
 
@@ -81,16 +86,20 @@ public class GUIPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void menuInformacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuInformacoesActionPerformed
+
+        if ((guiSobre == null) || (!guiSobre.isVisible())) {
+            guiSobre = new GUISobre();
+            desktopPane.add(guiSobre);
+            guiSobre.setPosicao();
+            guiSobre.setVisible(true);
+        }
+    }//GEN-LAST:event_menuInformacoesActionPerformed
+
     /**
     * @param args the command line arguments
     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUIPrincipal().setVisible(true);
-            }
-        });
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
