@@ -5,11 +5,14 @@
 
 package modelo.dominio.constante;
 
+import java.awt.Dimension;
+
 /**
  *
  * @author Marlon
  */
+
 public enum OperacaoEspeciePagamento {
     Credito,
-    Debito
+    Debito ;
 }
