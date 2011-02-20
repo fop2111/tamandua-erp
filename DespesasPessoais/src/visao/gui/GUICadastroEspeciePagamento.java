@@ -13,7 +13,7 @@ package visao.gui;
 
 import excecao.PessoaisException;
 import java.awt.Dimension;
-import java.text.DateFormat;
+import java.awt.event.ActionListener;
 import modelo.dominio.EspeciePagamento;
 import modelo.dominio.constante.Constante;
 import modelo.dominio.constante.OperacaoEspeciePagamento;
@@ -53,22 +53,75 @@ public class GUICadastroEspeciePagamento extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pDadosEspeciePagamento = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        bSair = new javax.swing.JButton();
+        bNovo = new javax.swing.JButton();
+        bGravar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        lbCodigo = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        edtDescricao = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         cbOperacao = new javax.swing.JComboBox();
-        edtDescricao = new javax.swing.JTextField();
-        lbCodigo = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         cbTipoConta = new javax.swing.JComboBox();
 
         setClosable(true);
         setTitle("Cadastro de Espécie");
 
-        pDadosEspeciePagamento.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados Especie Lançamento"));
+        jPanel1.setBackground(new java.awt.Color(176, 176, 175));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        bSair.setBackground(new java.awt.Color(176, 176, 175));
+        bSair.setText("Sair");
+        bSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSairActionPerformed(evt);
+            }
+        });
+
+        bNovo.setBackground(new java.awt.Color(176, 176, 175));
+        bNovo.setText("Novo");
+        bNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bNovoActionPerformed(evt);
+            }
+        });
+
+        bGravar.setBackground(new java.awt.Color(176, 176, 175));
+        bGravar.setText("Gravar");
+        bGravar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bGravarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(bNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bGravar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bSair, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(223, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(bGravar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bSair, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         jLabel1.setText("Código Espécie");
+
+        lbCodigo.setFont(new java.awt.Font("sansserif", 1, 12));
+        lbCodigo.setForeground(new java.awt.Color(0, 0, 255));
+        lbCodigo.setText("codigo");
 
         jLabel2.setText("Descrição");
 
@@ -76,77 +129,73 @@ public class GUICadastroEspeciePagamento extends javax.swing.JInternalFrame {
 
         cbOperacao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione.." }));
 
-        lbCodigo.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
-        lbCodigo.setForeground(new java.awt.Color(0, 0, 255));
-        lbCodigo.setText("codigo");
-
         jLabel4.setText("Tipo de Conta");
 
         cbTipoConta.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione.." }));
-
-        javax.swing.GroupLayout pDadosEspeciePagamentoLayout = new javax.swing.GroupLayout(pDadosEspeciePagamento);
-        pDadosEspeciePagamento.setLayout(pDadosEspeciePagamentoLayout);
-        pDadosEspeciePagamentoLayout.setHorizontalGroup(
-            pDadosEspeciePagamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pDadosEspeciePagamentoLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(pDadosEspeciePagamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pDadosEspeciePagamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbTipoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbOperacao, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbCodigo)
-                    .addComponent(edtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(53, Short.MAX_VALUE))
-        );
-        pDadosEspeciePagamentoLayout.setVerticalGroup(
-            pDadosEspeciePagamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pDadosEspeciePagamentoLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(pDadosEspeciePagamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(lbCodigo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pDadosEspeciePagamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(edtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pDadosEspeciePagamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbOperacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pDadosEspeciePagamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbTipoConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addContainerGap(26, Short.MAX_VALUE))
-        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pDadosEspeciePagamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbTipoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbOperacao, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(edtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbCodigo))
+                .addContainerGap(100, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pDadosEspeciePagamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(lbCodigo))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(edtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbOperacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbTipoConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void bSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSairActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bSairActionPerformed
+
+    private void bNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bNovoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bNovoActionPerformed
+
+    private void bGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGravarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bGravarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bGravar;
+    private javax.swing.JButton bNovo;
+    private javax.swing.JButton bSair;
     private javax.swing.JComboBox cbOperacao;
     private javax.swing.JComboBox cbTipoConta;
     private javax.swing.JTextField edtDescricao;
@@ -154,8 +203,8 @@ public class GUICadastroEspeciePagamento extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbCodigo;
-    private javax.swing.JPanel pDadosEspeciePagamento;
     // End of variables declaration//GEN-END:variables
 
    private EspeciePagamento especie_pagamento;
@@ -205,5 +254,14 @@ public class GUICadastroEspeciePagamento extends javax.swing.JInternalFrame {
           lbCodigo.setText(String.valueOf(especie_pagamento.getId_especie_pagamento()));
        
       }
+   }
+
+   public void setEspeciePagamento(EspeciePagamento especie_pagamento){
+      this.especie_pagamento = especie_pagamento;
+      this.exibeDadosEspeciePagamento();
+   }
+
+   public void bGravarEspeciePagamentoAddActionListener(ActionListener ouvinte) {
+     bGravar.addActionListener(ouvinte);
    }
 }
