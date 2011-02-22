@@ -11,6 +11,7 @@
 
 package visao.gui;
 
+import java.beans.PropertyVetoException;
 import javax.swing.JFrame;
 
 /**
@@ -49,6 +50,11 @@ public class GUIPrincipal extends javax.swing.JFrame {
         menuCadastro.setText("Cadastros");
 
         menuCEspeciePagamento.setText("Espécie Despesas");
+        menuCEspeciePagamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCEspeciePagamentoActionPerformed(evt);
+            }
+        });
         menuCadastro.add(menuCEspeciePagamento);
 
         menuBar.add(menuCadastro);
@@ -68,6 +74,11 @@ public class GUIPrincipal extends javax.swing.JFrame {
         menuBar.add(menuInformacoes);
 
         menuSair.setText("Sair");
+        menuSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuSairActionPerformed(evt);
+            }
+        });
         menuBar.add(menuSair);
 
         setJMenuBar(menuBar);
@@ -95,6 +106,29 @@ public class GUIPrincipal extends javax.swing.JFrame {
             guiSobre.setVisible(true);
         }
     }//GEN-LAST:event_menuInformacoesActionPerformed
+
+    private void menuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSairActionPerformed
+      this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_menuSairActionPerformed
+    private GUICadastroEspeciePagamento guiCadastroEspeciePagamento;
+
+    private void menuCEspeciePagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCEspeciePagamentoActionPerformed
+
+        if ((guiCadastroEspeciePagamento == null) || (!guiCadastroEspeciePagamento.isVisible())) {
+           guiCadastroEspeciePagamento = new GUICadastroEspeciePagamento();
+           desktopPane.add(guiCadastroEspeciePagamento);
+           guiCadastroEspeciePagamento.setPosicao();
+           guiCadastroEspeciePagamento.setVisible(true);
+        }
+         try {
+             guiCadastroEspeciePagamento.setSelected(true);
+         } catch (PropertyVetoException exc) {
+             StringBuffer mensagem = new StringBuffer();
+             mensagem.append("Não foi possível selecionar a janela!");
+             mensagem.append("\nMotivo: " + exc.getMessage());
+            GUIMensagem.exibirMensagem(mensagem.toString(), "Despesas - Especie pagamento", true);
+        }
+    }//GEN-LAST:event_menuCEspeciePagamentoActionPerformed
 
     /**
     * @param args the command line arguments
