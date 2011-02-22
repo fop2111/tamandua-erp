@@ -180,7 +180,7 @@ public class GUICadastroEspeciePagamento extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSairActionPerformed
-        // TODO add your handling code here:
+       this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_bSairActionPerformed
 
     private void bNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bNovoActionPerformed

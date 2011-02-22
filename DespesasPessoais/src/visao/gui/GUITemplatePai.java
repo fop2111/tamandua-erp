@@ -11,6 +11,12 @@
 
 package visao.gui;
 
+import java.awt.Dimension;
+import java.beans.PropertyVetoException;
+import modelo.dominio.EspeciePagamento;
+import modelo.dominio.constante.Constante;
+import visao.ouvinte.OuvinteEspeciePagamento;
+
 /**
  *
  * @author Marlon
@@ -21,6 +27,8 @@ public class GUITemplatePai extends javax.swing.JInternalFrame {
     public GUITemplatePai() {
         initComponents();
     }
+
+    private GUICadastroEspeciePagamento guiCadastroEspeciePagamento;
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -33,7 +41,7 @@ public class GUITemplatePai extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        bSair1 = new javax.swing.JButton();
+        bNovo = new javax.swing.JButton();
         bSair2 = new javax.swing.JButton();
         bSair3 = new javax.swing.JButton();
         bSair4 = new javax.swing.JButton();
@@ -42,16 +50,18 @@ public class GUITemplatePai extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
+        setClosable(true);
+
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jPanel2.setBackground(new java.awt.Color(176, 176, 175));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        bSair1.setBackground(new java.awt.Color(176, 176, 175));
-        bSair1.setText("Novo");
-        bSair1.addActionListener(new java.awt.event.ActionListener() {
+        bNovo.setBackground(new java.awt.Color(176, 176, 175));
+        bNovo.setText("Novo");
+        bNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bSair1ActionPerformed(evt);
+                bNovoActionPerformed(evt);
             }
         });
 
@@ -110,7 +120,7 @@ public class GUITemplatePai extends javax.swing.JInternalFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(bSair1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bSair3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -125,7 +135,7 @@ public class GUITemplatePai extends javax.swing.JInternalFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(bSair1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(bSair3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(bSair4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(bSair5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -177,9 +187,11 @@ public class GUITemplatePai extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bSair1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSair1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bSair1ActionPerformed
+    private void bNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bNovoActionPerformed
+       EspeciePagamento especiepagamento = new EspeciePagamento();
+       especiepagamento.setId_especie_pagamento(Constante.NOVO);
+       this.abrirGUICadastroEspeciePagamento(especiepagamento);
+    }//GEN-LAST:event_bNovoActionPerformed
 
     private void bSair2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSair2ActionPerformed
         // TODO add your handling code here:
@@ -203,7 +215,7 @@ public class GUITemplatePai extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bSair1;
+    private javax.swing.JButton bNovo;
     private javax.swing.JButton bSair2;
     private javax.swing.JButton bSair3;
     private javax.swing.JButton bSair4;
@@ -215,4 +227,28 @@ public class GUITemplatePai extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
+   public void setPosicao() {
+     Dimension d = this.getDesktopPane().getSize();
+     this.setLocation((d.width - this.getSize().width) / 6, (d.height -
+     this.getSize().height) / 6);
+   }
+
+   private void abrirGUICadastroEspeciePagamento (EspeciePagamento especiepagamento) {
+     if ((guiCadastroEspeciePagamento == null) || (!guiCadastroEspeciePagamento.isVisible())) {
+         guiCadastroEspeciePagamento = new GUICadastroEspeciePagamento();
+         OuvinteEspeciePagamento ouvinte = new
+         OuvinteEspeciePagamento(guiCadastroEspeciePagamento);
+         this.getParent().add(guiCadastroEspeciePagamento);
+         guiCadastroEspeciePagamento.setPosicao();
+         guiCadastroEspeciePagamento.setVisible(true);
+         guiCadastroEspeciePagamento.setEspeciePagamento(especiepagamento);
+     }try {
+            guiCadastroEspeciePagamento.setSelected(true);
+          } catch (PropertyVetoException exc) {
+             StringBuffer mensagem = new StringBuffer();
+             mensagem.append("Não foi possível selecionar a janela de cadastro de especie pagamento!");
+             mensagem.append("\nMotivo: " + exc.getMessage());
+             GUIMensagem.exibirMensagem(mensagem.toString(), "DukeClube - Cadastro desócio", true);
+}
+}
 }

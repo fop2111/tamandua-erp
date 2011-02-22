@@ -17,7 +17,7 @@ import persistencia.impl.FabricaPersistencia;
  */
 public class ControleEspeciePagamento {
 
-    public void gravarSocio(EspeciePagamento especie_pagamento) throws PessoaisException {
+    public void gravarEspeciePagamento(EspeciePagamento especie_pagamento) throws PessoaisException {
         IFabricaPersistencia fabricaPersistencia = new FabricaPersistencia();
         IGatewayEspeciePagamento gatewayEspeciePagamento = fabricaPersistencia.getGatewayEspeciePagamento();
         gatewayEspeciePagamento.gravarEspeciePagamento(especie_pagamento);
