@@ -14,10 +14,13 @@ package visao.gui;
 import excecao.PessoaisException;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
+import java.lang.String;
+import java.lang.String;
 import modelo.dominio.EspeciePagamento;
 import modelo.dominio.constante.Constante;
 import modelo.dominio.constante.OperacaoEspeciePagamento;
 import modelo.dominio.constante.TipoContaEspeciePagamento;
+import persistencia.impl.GeradorDeChave;
 
 /**
  *
@@ -208,10 +211,15 @@ public class GUICadastroEspeciePagamento extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
    private EspeciePagamento especie_pagamento;
-
+   private GeradorDeChave  codigo_especie ;
 
    public EspeciePagamento getEspeciePagamento() throws PessoaisException {
-       
+
+
+       int codigo = (int) codigo_especie.getProximoCodigo();
+
+       especie_pagamento.setId_especie_pagamento(codigo);
+
        String operacao = (String) cbOperacao.getSelectedItem();
 
        if (operacao == "") {

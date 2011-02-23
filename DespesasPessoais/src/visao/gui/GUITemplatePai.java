@@ -13,6 +13,9 @@ package visao.gui;
 
 import java.awt.Dimension;
 import java.beans.PropertyVetoException;
+import java.util.Iterator;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 import modelo.dominio.EspeciePagamento;
 import modelo.dominio.constante.Constante;
 import visao.ouvinte.OuvinteEspeciePagamento;
@@ -42,13 +45,13 @@ public class GUITemplatePai extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         bNovo = new javax.swing.JButton();
-        bSair2 = new javax.swing.JButton();
-        bSair3 = new javax.swing.JButton();
-        bSair4 = new javax.swing.JButton();
-        bSair5 = new javax.swing.JButton();
-        bSair6 = new javax.swing.JButton();
+        bSair = new javax.swing.JButton();
+        bAlterar = new javax.swing.JButton();
+        bPesquisar = new javax.swing.JButton();
+        bExcluir = new javax.swing.JButton();
+        bImprimir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        gridPrincipal = new javax.swing.JTable();
 
         setClosable(true);
 
@@ -65,53 +68,53 @@ public class GUITemplatePai extends javax.swing.JInternalFrame {
             }
         });
 
-        bSair2.setBackground(new java.awt.Color(176, 176, 175));
-        bSair2.setText("Sair");
-        bSair2.setMaximumSize(new java.awt.Dimension(56, 28));
-        bSair2.setMinimumSize(new java.awt.Dimension(56, 28));
-        bSair2.addActionListener(new java.awt.event.ActionListener() {
+        bSair.setBackground(new java.awt.Color(176, 176, 175));
+        bSair.setText("Sair");
+        bSair.setMaximumSize(new java.awt.Dimension(56, 28));
+        bSair.setMinimumSize(new java.awt.Dimension(56, 28));
+        bSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bSair2ActionPerformed(evt);
+                bSairActionPerformed(evt);
             }
         });
 
-        bSair3.setBackground(new java.awt.Color(176, 176, 175));
-        bSair3.setText("Alterar");
-        bSair3.setMaximumSize(new java.awt.Dimension(56, 28));
-        bSair3.setMinimumSize(new java.awt.Dimension(56, 28));
-        bSair3.addActionListener(new java.awt.event.ActionListener() {
+        bAlterar.setBackground(new java.awt.Color(176, 176, 175));
+        bAlterar.setText("Alterar");
+        bAlterar.setMaximumSize(new java.awt.Dimension(56, 28));
+        bAlterar.setMinimumSize(new java.awt.Dimension(56, 28));
+        bAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bSair3ActionPerformed(evt);
+                bAlterarActionPerformed(evt);
             }
         });
 
-        bSair4.setBackground(new java.awt.Color(176, 176, 175));
-        bSair4.setText("Pesquisar");
-        bSair4.setMaximumSize(new java.awt.Dimension(56, 28));
-        bSair4.setMinimumSize(new java.awt.Dimension(56, 28));
-        bSair4.addActionListener(new java.awt.event.ActionListener() {
+        bPesquisar.setBackground(new java.awt.Color(176, 176, 175));
+        bPesquisar.setText("Pesquisar");
+        bPesquisar.setMaximumSize(new java.awt.Dimension(56, 28));
+        bPesquisar.setMinimumSize(new java.awt.Dimension(56, 28));
+        bPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bSair4ActionPerformed(evt);
+                bPesquisarActionPerformed(evt);
             }
         });
 
-        bSair5.setBackground(new java.awt.Color(176, 176, 175));
-        bSair5.setText("Excluir");
-        bSair5.setMaximumSize(new java.awt.Dimension(56, 28));
-        bSair5.setMinimumSize(new java.awt.Dimension(56, 28));
-        bSair5.addActionListener(new java.awt.event.ActionListener() {
+        bExcluir.setBackground(new java.awt.Color(176, 176, 175));
+        bExcluir.setText("Excluir");
+        bExcluir.setMaximumSize(new java.awt.Dimension(56, 28));
+        bExcluir.setMinimumSize(new java.awt.Dimension(56, 28));
+        bExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bSair5ActionPerformed(evt);
+                bExcluirActionPerformed(evt);
             }
         });
 
-        bSair6.setBackground(new java.awt.Color(176, 176, 175));
-        bSair6.setText("Imprimir");
-        bSair6.setMaximumSize(new java.awt.Dimension(56, 28));
-        bSair6.setMinimumSize(new java.awt.Dimension(56, 28));
-        bSair6.addActionListener(new java.awt.event.ActionListener() {
+        bImprimir.setBackground(new java.awt.Color(176, 176, 175));
+        bImprimir.setText("Imprimir");
+        bImprimir.setMaximumSize(new java.awt.Dimension(56, 28));
+        bImprimir.setMinimumSize(new java.awt.Dimension(56, 28));
+        bImprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bSair6ActionPerformed(evt);
+                bImprimirActionPerformed(evt);
             }
         });
 
@@ -122,41 +125,65 @@ public class GUITemplatePai extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(bNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bSair3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bSair5, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bSair6, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bSair4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bSair2, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE))
+                .addComponent(bSair, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(bNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(bSair3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(bSair4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(bSair5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(bSair6, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(bSair2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(bAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bSair, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jTable1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        gridPrincipal.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        gridPrincipal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Código", "Descrição", "Operação", "Tipo de Conta"
             }
-        ));
-        jTable1.setCellSelectionEnabled(true);
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        gridPrincipal.setCellSelectionEnabled(true);
+        gridPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        gridPrincipal.setName("null"); // NOI18N
+        jScrollPane1.setViewportView(gridPrincipal);
+        gridPrincipal.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -193,39 +220,40 @@ public class GUITemplatePai extends javax.swing.JInternalFrame {
        this.abrirGUICadastroEspeciePagamento(especiepagamento);
     }//GEN-LAST:event_bNovoActionPerformed
 
-    private void bSair2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSair2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bSair2ActionPerformed
+    private void bSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSairActionPerformed
+      this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_bSairActionPerformed
 
-    private void bSair3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSair3ActionPerformed
+    private void bAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAlterarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bSair3ActionPerformed
+    }//GEN-LAST:event_bAlterarActionPerformed
 
-    private void bSair4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSair4ActionPerformed
+    private void bPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPesquisarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bSair4ActionPerformed
+    }//GEN-LAST:event_bPesquisarActionPerformed
 
-    private void bSair5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSair5ActionPerformed
+    private void bExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bExcluirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bSair5ActionPerformed
+    }//GEN-LAST:event_bExcluirActionPerformed
 
-    private void bSair6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSair6ActionPerformed
+    private void bImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bImprimirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bSair6ActionPerformed
+    }//GEN-LAST:event_bImprimirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bAlterar;
+    private javax.swing.JButton bExcluir;
+    private javax.swing.JButton bImprimir;
     private javax.swing.JButton bNovo;
-    private javax.swing.JButton bSair2;
-    private javax.swing.JButton bSair3;
-    private javax.swing.JButton bSair4;
-    private javax.swing.JButton bSair5;
-    private javax.swing.JButton bSair6;
+    private javax.swing.JButton bPesquisar;
+    private javax.swing.JButton bSair;
+    private javax.swing.JTable gridPrincipal;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+   private List especie;
 
    public void setPosicao() {
      Dimension d = this.getDesktopPane().getSize();
@@ -249,6 +277,35 @@ public class GUITemplatePai extends javax.swing.JInternalFrame {
              mensagem.append("Não foi possível selecionar a janela de cadastro de especie pagamento!");
              mensagem.append("\nMotivo: " + exc.getMessage());
              GUIMensagem.exibirMensagem(mensagem.toString(), "DukeClube - Cadastro desócio", true);
-}
-}
+            }
+   }
+
+
+   private void removerLinhasDaTabela(DefaultTableModel model){
+     while (model.getRowCount() > 0){
+       int ultimaLinha = model.getRowCount()-1;
+            model.removeRow(ultimaLinha);
+      }
+  }
+
+    public void exibirEspeciePagamento(List especie) {
+      this.especie  = especie;
+
+      DefaultTableModel model = (DefaultTableModel) gridPrincipal.getModel();
+      this.removerLinhasDaTabela(model);
+      Iterator resultado = especie.iterator();
+
+      while (resultado.hasNext()) {
+        EspeciePagamento especiepagamento = (EspeciePagamento) resultado.next();
+        int   codigo     = especiepagamento.getId_especie_pagamento();
+        String descricao = especiepagamento.getDescricao();
+        String operacao = especiepagamento.getOperacao();
+        String tipoConta = especiepagamento.getTipo_conta();
+
+        Object[] linha = {codigo, descricao, operacao, tipoConta};
+        model.addRow(linha);
+    }
+  }
+
+
 }

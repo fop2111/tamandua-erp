@@ -110,18 +110,18 @@ public class GUIPrincipal extends javax.swing.JFrame {
     private void menuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSairActionPerformed
       this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_menuSairActionPerformed
-    private GUICadastroEspeciePagamento guiCadastroEspeciePagamento;
+    private GUITemplatePai guiTemplatePai;
 
     private void menuCEspeciePagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCEspeciePagamentoActionPerformed
 
-        if ((guiCadastroEspeciePagamento == null) || (!guiCadastroEspeciePagamento.isVisible())) {
-           guiCadastroEspeciePagamento = new GUICadastroEspeciePagamento();
-           desktopPane.add(guiCadastroEspeciePagamento);
-           guiCadastroEspeciePagamento.setPosicao();
-           guiCadastroEspeciePagamento.setVisible(true);
+        if ((guiTemplatePai == null) || (!guiTemplatePai.isVisible())) {
+           guiTemplatePai = new GUITemplatePai();
+           desktopPane.add(guiTemplatePai);
+           guiTemplatePai.setPosicao();
+           guiTemplatePai.setVisible(true);
         }
          try {
-             guiCadastroEspeciePagamento.setSelected(true);
+             guiTemplatePai.setSelected(true);
          } catch (PropertyVetoException exc) {
              StringBuffer mensagem = new StringBuffer();
              mensagem.append("Não foi possível selecionar a janela!");
