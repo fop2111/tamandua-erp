@@ -211,10 +211,13 @@ public class GUICadastroEspeciePagamento extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
    private EspeciePagamento especie_pagamento;
-   private GeradorDeChave  codigo_especie ;
+
+   private GeradorDeChave   codigo_especie;
+
 
    public EspeciePagamento getEspeciePagamento() throws PessoaisException {
 
+       codigo_especie =  new GeradorDeChave("tam_custos.sq_especie_pagamento") ;
 
        int codigo = (int) codigo_especie.getProximoCodigo();
 

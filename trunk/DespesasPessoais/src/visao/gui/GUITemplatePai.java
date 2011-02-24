@@ -29,6 +29,7 @@ public class GUITemplatePai extends javax.swing.JInternalFrame {
     /** Creates new form GUITemplatePai */
     public GUITemplatePai() {
         initComponents();
+        exibirEspeciePagamento(especie);
     }
 
     private GUICadastroEspeciePagamento guiCadastroEspeciePagamento;
@@ -306,6 +307,8 @@ public class GUITemplatePai extends javax.swing.JInternalFrame {
         model.addRow(linha);
     }
   }
+
+
 
 
 }

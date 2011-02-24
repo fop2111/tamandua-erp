@@ -36,8 +36,9 @@ public class GeradorDeChave {
 
         PreparedStatement stmt = null;
         ResultSet rs           = null;
+
         long proximoCodigoNovo = 0;
-        String sql = "select  nextval('?') proximoCodigo ";
+        String sql = "select  nextval(?) proximoCodigo ";
         try {
               stmt = con.prepareStatement(sql);
               stmt.setString(1, tabela);

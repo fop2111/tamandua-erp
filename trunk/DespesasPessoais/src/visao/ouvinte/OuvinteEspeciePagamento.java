@@ -36,8 +36,8 @@ public class OuvinteEspeciePagamento {
                controle.gravarEspeciePagamento(especiepagamento);
                GUIMensagem.exibirMensagem("Especie gravado com sucesso!", "Despesas especie pagamento", false);
                guiCadastroEspeciePagamento.limparCampos();
-          } catch (PessoaisException ex) {
-               GUIMensagem.exibirMensagem(ex.getMessage(), "Despesas - Espécie Pagamento", true);
+               } catch (PessoaisException ex) {
+                    GUIMensagem.exibirMensagem(ex.getMessage(), "Despesas - Espécie Pagamento", true);
             }
         }
      }
