@@ -20,17 +20,17 @@ import persistencia.IGatewayEspeciePagamento;
 public class GatewayEspeciePagamento implements IGatewayEspeciePagamento {
 
     public void gravarEspeciePagamento(EspeciePagamento especie_pagamento) throws PessoaisException {
-        if (especie_pagamento.getId_especie_pagamento() == Constante.NOVO) {
-           incluirSocio(especie_pagamento);
-        }
+        //if (especie_pagamento.getId_especie_pagamento() == Constante.NOVO) {
+           incluirEspeciePagamento(especie_pagamento);
+    //    }
     }
 
     private static final String SQL_INCLUIR_ESPECIE_PAGAMENTO = "INSERT INTO tam_custos.especie_pagamento " +
-                                                                        "(id_especie_pagamento, descricao, operacao , tipo_conta "+
+                                                                        "(id_especie_pagamento, descricao, operacao , tipo_conta) "+
                                                                  "VALUES (?, ?, ?, ?)";
 
 
-    private void incluirSocio(EspeciePagamento especie_pagamento) throws PessoaisException {
+    private void incluirEspeciePagamento(EspeciePagamento especie_pagamento) throws PessoaisException {
      if (especie_pagamento == null) {
        String mensagem = "Não foi informado o socio a cadastrar.";
        throw new PessoaisException(mensagem);
