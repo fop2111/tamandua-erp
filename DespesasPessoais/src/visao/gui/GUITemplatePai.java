@@ -30,7 +30,8 @@ public class GUITemplatePai extends javax.swing.JInternalFrame {
     /** Creates new form GUITemplatePai */
     public GUITemplatePai() {
         initComponents();
-       
+
+
     }
 
     private GUICadastroEspeciePagamento guiCadastroEspeciePagamento;

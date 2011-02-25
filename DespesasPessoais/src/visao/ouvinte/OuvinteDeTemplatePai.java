@@ -26,6 +26,7 @@ public class OuvinteDeTemplatePai {
                ControleEspeciePagamento controle = new ControleEspeciePagamento();
                String descricao = guiTemplatePai.getDescricao();
                if (descricao != null && !descricao.trim().equals("")) {
+
                   controle.adicionarCriterioDePesquisaContem("descricao", descricao);
                }
                List especiepagamento = controle.realizarPesquisa();
@@ -36,7 +37,7 @@ public class OuvinteDeTemplatePai {
                       StringBuffer mensagem = new StringBuffer();
                       mensagem.append("Não há especie cadastradas que");
                       mensagem.append("\natendam ao critério informado.");
-                      GUIMensagem.exibirMensagem(mensagem.toString(), "Cadastro de sócio", true);
+                      GUIMensagem.exibirMensagem(mensagem.toString(), "Cadastro de especie pagamento", true);
                }
             } catch (PessoaisException ex) {
                     GUIMensagem.exibirMensagem(ex.getMessage(), "DukeClube - Sócios", true);
