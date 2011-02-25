@@ -13,6 +13,7 @@ package visao.gui;
 
 import java.beans.PropertyVetoException;
 import javax.swing.JFrame;
+import visao.ouvinte.OuvinteDeTemplatePai;
 
 /**
  *
@@ -116,6 +117,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
 
         if ((guiTemplatePai == null) || (!guiTemplatePai.isVisible())) {
            guiTemplatePai = new GUITemplatePai();
+           OuvinteDeTemplatePai ouvinte = new OuvinteDeTemplatePai(guiTemplatePai);
            desktopPane.add(guiTemplatePai);
            guiTemplatePai.setPosicao();
            guiTemplatePai.setVisible(true);

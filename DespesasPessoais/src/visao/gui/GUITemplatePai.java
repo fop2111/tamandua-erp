@@ -12,6 +12,7 @@
 package visao.gui;
 
 import java.awt.Dimension;
+import java.awt.event.ActionListener;
 import java.beans.PropertyVetoException;
 import java.util.Iterator;
 import java.util.List;
@@ -29,7 +30,7 @@ public class GUITemplatePai extends javax.swing.JInternalFrame {
     /** Creates new form GUITemplatePai */
     public GUITemplatePai() {
         initComponents();
-        exibirEspeciePagamento(especie);
+       
     }
 
     private GUICadastroEspeciePagamento guiCadastroEspeciePagamento;
@@ -53,6 +54,9 @@ public class GUITemplatePai extends javax.swing.JInternalFrame {
         bImprimir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         gridPrincipal = new javax.swing.JTable();
+        jPesquisa = new javax.swing.JPanel();
+        edtDescricao = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
 
@@ -134,7 +138,8 @@ public class GUITemplatePai extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bSair, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE))
+                .addComponent(bSair, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,16 +155,7 @@ public class GUITemplatePai extends javax.swing.JInternalFrame {
         gridPrincipal.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         gridPrincipal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Código", "Descrição", "Operação", "Tipo de Conta"
@@ -182,23 +178,57 @@ public class GUITemplatePai extends javax.swing.JInternalFrame {
         });
         gridPrincipal.setCellSelectionEnabled(true);
         gridPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        gridPrincipal.setName("null"); // NOI18N
         jScrollPane1.setViewportView(gridPrincipal);
         gridPrincipal.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+
+        jPesquisa.setBackground(new java.awt.Color(219, 218, 202));
+        jPesquisa.setBorder(null);
+
+        jLabel1.setText("Descricao");
+
+        javax.swing.GroupLayout jPesquisaLayout = new javax.swing.GroupLayout(jPesquisa);
+        jPesquisa.setLayout(jPesquisaLayout);
+        jPesquisaLayout.setHorizontalGroup(
+            jPesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPesquisaLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(edtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(247, Short.MAX_VALUE))
+        );
+        jPesquisaLayout.setVerticalGroup(
+            jPesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPesquisaLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(jPesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(edtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(9, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE))
+                    .addComponent(jPesquisa, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(35, 35, 35))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE))
+                .addComponent(jPesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -249,18 +279,23 @@ public class GUITemplatePai extends javax.swing.JInternalFrame {
     private javax.swing.JButton bNovo;
     private javax.swing.JButton bPesquisar;
     private javax.swing.JButton bSair;
+    private javax.swing.JTextField edtDescricao;
     private javax.swing.JTable gridPrincipal;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPesquisa;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
-   private List especie;
+
+    private List especie;
 
    public void setPosicao() {
      Dimension d = this.getDesktopPane().getSize();
      this.setLocation((d.width - this.getSize().width) / 6, (d.height -
      this.getSize().height) / 6);
    }
+
 
    private void abrirGUICadastroEspeciePagamento (EspeciePagamento especiepagamento) {
      if ((guiCadastroEspeciePagamento == null) || (!guiCadastroEspeciePagamento.isVisible())) {
@@ -287,7 +322,7 @@ public class GUITemplatePai extends javax.swing.JInternalFrame {
        int ultimaLinha = model.getRowCount()-1;
             model.removeRow(ultimaLinha);
       }
-  }
+   }
 
     public void exibirEspeciePagamento(List especie) {
       this.especie  = especie;
@@ -308,7 +343,13 @@ public class GUITemplatePai extends javax.swing.JInternalFrame {
     }
   }
 
+  public void bPesquisarAddActionListener(ActionListener ouvinte) {
+    bPesquisar.addActionListener(ouvinte);
+  }
 
+  public String getDescricao() {
+    return edtDescricao.getText();
+  }
 
 
 }
