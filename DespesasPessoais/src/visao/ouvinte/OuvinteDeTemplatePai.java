@@ -26,7 +26,7 @@ public class OuvinteDeTemplatePai {
                ControleEspeciePagamento controle = new ControleEspeciePagamento();
                String descricao = guiTemplatePai.getDescricao();
                if (descricao != null && !descricao.trim().equals("")) {
-                  controle.adicionarCriterioDePesquisaContem("nome", descricao);
+                  controle.adicionarCriterioDePesquisaContem("descricao", descricao);
                }
                List especiepagamento = controle.realizarPesquisa();
            
