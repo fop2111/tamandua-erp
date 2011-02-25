@@ -40,6 +40,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
         menuBar = new javax.swing.JMenuBar();
         menuCadastro = new javax.swing.JMenu();
         menuCEspeciePagamento = new javax.swing.JMenuItem();
+        jTemplateTeste = new javax.swing.JMenuItem();
         menuLancamento = new javax.swing.JMenu();
         menuRelatorio = new javax.swing.JMenu();
         menuInformacoes = new javax.swing.JMenu();
@@ -57,6 +58,14 @@ public class GUIPrincipal extends javax.swing.JFrame {
             }
         });
         menuCadastro.add(menuCEspeciePagamento);
+
+        jTemplateTeste.setText("Template Testes");
+        jTemplateTeste.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTemplateTesteActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(jTemplateTeste);
 
         menuBar.add(menuCadastro);
 
@@ -113,6 +122,8 @@ public class GUIPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuSairActionPerformed
     private GUITemplatePai guiTemplatePai;
 
+    private GUITemplateTeste guiTemplateTeste;
+
     private void menuCEspeciePagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCEspeciePagamentoActionPerformed
 
         if ((guiTemplatePai == null) || (!guiTemplatePai.isVisible())) {
@@ -132,6 +143,15 @@ public class GUIPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_menuCEspeciePagamentoActionPerformed
 
+    private void jTemplateTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTemplateTesteActionPerformed
+       if ((guiTemplateTeste == null) || (!guiTemplateTeste.isVisible())) {
+            guiTemplateTeste = new GUITemplateTeste();
+            desktopPane.add(guiTemplateTeste);
+            //guiSobre.setPosicao();
+            guiTemplateTeste.setVisible(true);
+       }
+    }//GEN-LAST:event_jTemplateTesteActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -139,6 +159,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
+    private javax.swing.JMenuItem jTemplateTeste;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem menuCEspeciePagamento;
     private javax.swing.JMenu menuCadastro;

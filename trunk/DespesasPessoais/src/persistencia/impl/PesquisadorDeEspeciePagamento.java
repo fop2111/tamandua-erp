@@ -45,6 +45,7 @@ public class PesquisadorDeEspeciePagamento implements IPesquisadorDeEspeciePagam
 
    private List encontrarEspeciePagamentoOnde(String clausulaWhere) throws PessoaisException {
      String sql = "SELECT * FROM tam_custos.especie_pagamento " + clausulaWhere;
+
      Connection con = null;
      PreparedStatement stmt = null;
      ResultSet rs = null;
