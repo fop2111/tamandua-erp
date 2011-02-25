@@ -7,6 +7,7 @@ package persistencia.impl;
 
 import persistencia.IFabricaPersistencia;
 import persistencia.IGatewayEspeciePagamento;
+import persistencia.IPesquisadorDeEspeciePagamento;
 
 /**
  *
@@ -18,4 +19,7 @@ public class FabricaPersistencia implements IFabricaPersistencia {
         return new GatewayEspeciePagamento();
     }
 
+    public IPesquisadorDeEspeciePagamento getPesquisadorDeEspeciePagamento() {
+      return new PesquisadorDeEspeciePagamento();
+    }
 }

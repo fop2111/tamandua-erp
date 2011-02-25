@@ -12,4 +12,5 @@ package persistencia;
 public interface IFabricaPersistencia {
     public IGatewayEspeciePagamento getGatewayEspeciePagamento();
 
+    public IPesquisadorDeEspeciePagamento getPesquisadorDeEspeciePagamento();
 }

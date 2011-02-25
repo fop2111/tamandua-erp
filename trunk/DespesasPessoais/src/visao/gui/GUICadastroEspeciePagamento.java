@@ -217,11 +217,11 @@ public class GUICadastroEspeciePagamento extends javax.swing.JInternalFrame {
 
    public EspeciePagamento getEspeciePagamento() throws PessoaisException {
 
-       codigo_especie =  new GeradorDeChave("tam_custos.sq_especie_pagamento") ;
+    //   codigo_especie =  new GeradorDeChave("tam_custos.sq_especie_pagamento") ;
 
-       int codigo = (int) codigo_especie.getProximoCodigo();
+   //    int codigo = (int) codigo_especie.getProximoCodigo();
 
-       especie_pagamento.setId_especie_pagamento(codigo);
+ //      especie_pagamento.setId_especie_pagamento(codigo);
 
        String operacao = (String) cbOperacao.getSelectedItem();
 
