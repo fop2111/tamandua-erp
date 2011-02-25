@@ -44,7 +44,7 @@ public class PesquisadorDeEspeciePagamento implements IPesquisadorDeEspeciePagam
     }
 
    private List encontrarEspeciePagamentoOnde(String clausulaWhere) throws PessoaisException {
-     String sql = "SELECT * FROM socio" + clausulaWhere;
+     String sql = "SELECT * FROM tam_custos.especie_pagamento " + clausulaWhere;
      Connection con = null;
      PreparedStatement stmt = null;
      ResultSet rs = null;
@@ -70,12 +70,12 @@ public class PesquisadorDeEspeciePagamento implements IPesquisadorDeEspeciePagam
    private EspeciePagamento criarEspeciePagamento(ResultSet rs) throws PessoaisException {
       EspeciePagamento especiepagamento = new EspeciePagamento();
       try {
-             especiepagamento.setId_especie_pagamento(rs.getInt("codigosocio"));
+             especiepagamento.setId_especie_pagamento(rs.getInt("id_especie_pagamento"));
              especiepagamento.setDescricao(rs.getString("descricao"));
              especiepagamento.setOperacao(rs.getString("operacao"));
              especiepagamento.setTipo_conta(rs.getString("tipo_conta"));
           } catch (SQLException exc) {
-               StringBuffer mensagem = new StringBuffer("Não foi possível obter os dados do sócio.");
+               StringBuffer mensagem = new StringBuffer("Não foi possível obter os dados da espécie pagamento.");
                mensagem.append("\nMotivo: " + exc.getMessage());
                throw new PessoaisException(mensagem.toString());
           }
