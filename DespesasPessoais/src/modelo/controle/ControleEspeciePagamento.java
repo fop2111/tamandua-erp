@@ -55,4 +55,10 @@ public class ControleEspeciePagamento {
        IFabricaPersistencia fabricaPersistencia = new FabricaPersistencia();
        this.pesquisador = fabricaPersistencia.getPesquisadorDeEspeciePagamento();
     }
+
+    public void excluirEspeciePagamento(EspeciePagamento especiepagamento) throws PessoaisException {
+        IFabricaPersistencia fabricaPersistencia = new FabricaPersistencia();
+        IGatewayEspeciePagamento gatewayEspeciePagamento = fabricaPersistencia.getGatewayEspeciePagamento();
+        gatewayEspeciePagamento.excluirEspeciePagamento(especiepagamento);
+    }
 }
