@@ -11,11 +11,13 @@
 
 package visao.gui;
 
+import excecao.PessoaisException;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.beans.PropertyVetoException;
 import java.util.Iterator;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.dominio.EspeciePagamento;
 import modelo.dominio.constante.Constante;
@@ -254,7 +256,13 @@ public class GUITemplatePai extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_bSairActionPerformed
 
     private void bAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAlterarActionPerformed
-        // TODO add your handling code here:
+      EspeciePagamento especiepagamento = null;
+      try {
+           especiepagamento = this.getEspeciePagamento();
+           this.abrirGUICadastroEspeciePagamento(especiepagamento);
+      } catch (PessoaisException ex) {
+              GUIMensagem.exibirMensagem(ex.getMessage(), "DukeClube - Sócios", true);
+        }
     }//GEN-LAST:event_bAlterarActionPerformed
 
     private void bPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPesquisarActionPerformed
@@ -347,6 +355,25 @@ public class GUITemplatePai extends javax.swing.JInternalFrame {
 
   public String getDescricao() {
     return edtDescricao.getText();
+  }
+
+  public EspeciePagamento getEspeciePagamento() throws PessoaisException {
+      EspeciePagamento especiepagamento = null;
+      int linhaSelecionada = gridPrincipal.getSelectedRow();
+      if (linhaSelecionada < 0) {
+           throw new PessoaisException("Não foi selecionado nenhuma especie de pagamento");
+      }
+      especiepagamento = (EspeciePagamento) this.especie.get(linhaSelecionada);
+         return especiepagamento;
+  }
+
+  public int pedirConfirmacao(String mensagem, String titulo, int tipo) {
+      int resposta = JOptionPane.showConfirmDialog(null, mensagem, titulo, tipo);
+      return resposta;
+  }
+
+  public void bExcluirSocioAddActionListener(ActionListener ouvinte) {
+    bExcluir.addActionListener(ouvinte);
   }
 
 

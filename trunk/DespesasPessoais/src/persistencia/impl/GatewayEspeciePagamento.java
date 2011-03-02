@@ -20,9 +20,12 @@ import persistencia.IGatewayEspeciePagamento;
 public class GatewayEspeciePagamento implements IGatewayEspeciePagamento {
 
     public void gravarEspeciePagamento(EspeciePagamento especie_pagamento) throws PessoaisException {
-        //if (especie_pagamento.getId_especie_pagamento() == Constante.NOVO) {
+        if (especie_pagamento.getId_especie_pagamento() == Constante.NOVO) {
            incluirEspeciePagamento(especie_pagamento);
-    //    }
+        }
+        else {
+           alterarEspeciePagmento(especie_pagamento);
+        }
     }
 
     private static final String SQL_INCLUIR_ESPECIE_PAGAMENTO = "INSERT INTO tam_custos.especie_pagamento " +
@@ -56,6 +59,59 @@ public class GatewayEspeciePagamento implements IGatewayEspeciePagamento {
               } finally {
                     GerenciadorDeConexao.closeConexao(con, stmt);
                 }
-}
+    }
 
+   private static final String SQL_ALTERARSOCIO = "UPDATE tam_custos.especie_pagamento SET "
+                                                          + "descricao =?, tipo_conta =?, operacao = ? "
+                                                 + "WHERE id_especie_pagamento = ?";
+
+   private static final String SQL_EXCLUIRSOCIO = "DELETE FROM tam_custos.especie_pagamento "
+                                                 + "WHERE id_especie_pagamento = ?";
+
+
+   private void alterarEspeciePagmento(EspeciePagamento especiepagamento) throws PessoaisException {
+      if (especiepagamento == null) {
+          String mensagem = "Não foi informado o socio a alterar";
+          throw new PessoaisException(mensagem);
+      }
+       Connection con = null;
+       PreparedStatement stmt = null;
+      try{
+          con  = GerenciadorDeConexao.getConexao();
+          stmt = con.prepareStatement(SQL_ALTERARSOCIO);
+          stmt.setString(1,   especiepagamento.getDescricao());
+          stmt.setString(2,   especiepagamento.getTipo_conta());
+          stmt.setString(3, especiepagamento.getOperacao());
+          stmt.setInt(4, especiepagamento.getId_especie_pagamento());
+          stmt.executeUpdate();
+         } catch (SQLException exc) {
+                StringBuffer mensagem = new StringBuffer("Não foi possível atualizar os dados do sócio.");
+                mensagem.append("\nMotivo: " + exc.getMessage());
+                throw new PessoaisException(mensagem.toString());
+         } finally {
+                     GerenciadorDeConexao.closeConexao(con, stmt);
+                   }
+   }
+
+
+   public void excluirEspeciePagamento(EspeciePagamento especiepagamento) throws PessoaisException {
+       if (especiepagamento == null) {
+            String mensagem = "Não foi informado a especie de pagamento a excluir.";
+            throw new PessoaisException(mensagem);
+       }
+        Connection con = null;
+        PreparedStatement stmt = null;
+        try {
+                con = GerenciadorDeConexao.getConexao();
+                stmt = con.prepareStatement(SQL_EXCLUIRSOCIO);
+                stmt.setInt(1, especiepagamento.getId_especie_pagamento());
+                stmt.executeUpdate();
+            } catch (SQLException exc) {
+                        StringBuffer mensagem = new StringBuffer("Não foi possível excluir a especie pagamento.");
+                        mensagem.append("\nMotivo:" + exc.getMessage());
+                        throw new PessoaisException(mensagem.toString());
+                    } finally {
+                            GerenciadorDeConexao.closeConexao(con, stmt);
+                      }
+    }
 }
