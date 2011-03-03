@@ -71,6 +71,11 @@ public class GUICadastroEspeciePagamento extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setTitle("Cadastro de Espécie");
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                formComponentResized(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(176, 176, 175));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -192,7 +197,12 @@ public class GUICadastroEspeciePagamento extends javax.swing.JInternalFrame {
 
     private void bGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGravarActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_bGravarActionPerformed
+
+    private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
+     // TODO add your handling code here:
+    }//GEN-LAST:event_formComponentResized
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -217,12 +227,7 @@ public class GUICadastroEspeciePagamento extends javax.swing.JInternalFrame {
 
    public EspeciePagamento getEspeciePagamento() throws PessoaisException {
 
-    //   codigo_especie =  new GeradorDeChave("tam_custos.sq_especie_pagamento") ;
-
-   //    int codigo = (int) codigo_especie.getProximoCodigo();
-
- //      especie_pagamento.setId_especie_pagamento(codigo);
-
+ 
        String operacao = (String) cbOperacao.getSelectedItem();
 
        if (operacao == "") {
@@ -274,5 +279,6 @@ public class GUICadastroEspeciePagamento extends javax.swing.JInternalFrame {
 
    public void bGravarEspeciePagamentoAddActionListener(ActionListener ouvinte) {
      bGravar.addActionListener(ouvinte);
+     dispose();
    }
 }
