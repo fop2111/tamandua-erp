@@ -34,14 +34,14 @@ public class OuvinteDeTemplatePai {
                }
                List especiepagamento = controle.realizarPesquisa();
            
-               if(especiepagamento.size() > 0){
+              // if(especiepagamento.size() > 0){
                  guiTemplatePai.exibirEspeciePagamento(especiepagamento);
-               } else {
-                      StringBuffer mensagem = new StringBuffer();
-                      mensagem.append("Não há especie cadastradas que");
-                      mensagem.append("\natendam ao critério informado.");
-                      GUIMensagem.exibirMensagem(mensagem.toString(), "Cadastro de especie pagamento", true);
-               }
+               //} else {
+               //       StringBuffer mensagem = new StringBuffer();
+               //       mensagem.append("Não há especie cadastradas que");
+               //       mensagem.append("\natendam ao critério informado.");
+               //       GUIMensagem.exibirMensagem(mensagem.toString(), "Cadastro de especie pagamento", true);
+               //}
             } catch (PessoaisException ex) {
                     GUIMensagem.exibirMensagem(ex.getMessage(), "DukeClube - Sócios", true);
                }
