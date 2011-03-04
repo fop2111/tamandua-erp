@@ -252,6 +252,7 @@ public class GUITemplatePai extends javax.swing.JInternalFrame {
 
     private void bNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bNovoActionPerformed
        EspeciePagamento especiepagamento = new EspeciePagamento();
+
        especiepagamento.setId_especie_pagamento(Constante.NOVO);
        this.abrirGUICadastroEspeciePagamento(especiepagamento);
     }//GEN-LAST:event_bNovoActionPerformed

@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import modelo.dominio.constante.Constante;
 
 /**
  *
@@ -52,6 +53,7 @@ public class GeradorDeChave {
               }finally {
                   GerenciadorDeConexao.closeConexao(con, stmt, rs);
                }
+
          return proximoCodigoNovo;
      }
 }
