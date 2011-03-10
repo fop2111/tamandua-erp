@@ -73,7 +73,7 @@ public class PesquisadorDeEspeciePagamento implements IPesquisadorDeEspeciePagam
       try {
              especiepagamento.setId_especie_pagamento(rs.getInt("id_especie_pagamento"));
              especiepagamento.setDescricao(rs.getString("descricao"));
-             especiepagamento.setOperacao(rs.getInt("operacao"));
+             especiepagamento.setOperacao(rs.getString("operacao"));
              especiepagamento.setTipo_conta(rs.getString("tipo_conta"));
           } catch (SQLException exc) {
                StringBuffer mensagem = new StringBuffer("Não foi possível obter os dados da espécie pagamento.");

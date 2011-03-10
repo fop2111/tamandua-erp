@@ -13,7 +13,7 @@ public class EspeciePagamento {
 
     private int id_especie_pagamento = 0 ;
     private String descricao         = "";
-    private int operacao          =   0;
+    private String operacao          = "";
     private String tipo_conta        = "";
 
     public EspeciePagamento() {
@@ -50,14 +50,14 @@ public class EspeciePagamento {
     /**
      * @return the operacao
      */
-    public int getOperacao() {
+    public String getOperacao() {
         return operacao;
     }
 
     /**
      * @param operacao the operacao to set
      */
-    public void setOperacao(int operacao) {
+    public void setOperacao(String operacao) {
         this.operacao = operacao;
     }
 

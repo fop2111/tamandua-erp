@@ -200,8 +200,7 @@ public class GUICadastroEspeciePagamento extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_bNovoActionPerformed
 
     private void bGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGravarActionPerformed
-        // TODO add your handling code here:
-
+      dispose();   // TODO add your handling code here:
     }//GEN-LAST:event_bGravarActionPerformed
 
     private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
@@ -232,12 +231,12 @@ public class GUICadastroEspeciePagamento extends javax.swing.JInternalFrame {
    public EspeciePagamento getEspeciePagamento() throws PessoaisException {
 
  
-       int operacao =  cbOperacao.getSelectedIndex();
+       String operacao =  (String) cbOperacao.getSelectedItem();
 
-       if (operacao == 0) {
+       if (operacao == "") {
           throw new PessoaisException("Não foi informada a operacao.");
        } else {
-               especie_pagamento.setOperacao(operacao - 1);
+               especie_pagamento.setOperacao(operacao);
               }
         String descricao = edtDescricao.getText();
 
@@ -268,7 +267,7 @@ public class GUICadastroEspeciePagamento extends javax.swing.JInternalFrame {
    public void exibeDadosEspeciePagamento() {
       limparCampos();
       if (especie_pagamento.getId_especie_pagamento() != Constante.NOVO) {
-          cbOperacao.setSelectedIndex(especie_pagamento.getOperacao() + 1);
+          
           edtDescricao.setText(especie_pagamento.getDescricao());
 
           String  tipo_conta =  especie_pagamento.getTipo_conta().trim();
@@ -278,12 +277,17 @@ public class GUICadastroEspeciePagamento extends javax.swing.JInternalFrame {
              i = i + 1;
              if (tipo_conta_especie_pagamento.name().trim().equals(tipo_conta))
                 cbTipoConta.setSelectedIndex(i);
-              
           }
-
-          lbCodigo.setText(String.valueOf(especie_pagamento.getId_especie_pagamento()));
-       
-      }
+          i= 0;
+          String operacao = especie_pagamento.getOperacao().trim();
+          for (OperacaoEspeciePagamento operacao_especie_pagamento : OperacaoEspeciePagamento.values()){
+            i = i+ 1;
+            if (operacao_especie_pagamento.name().trim().equals(operacao) )
+              cbOperacao.setSelectedIndex(i);
+          }
+          
+       }
+      lbCodigo.setText(String.valueOf(especie_pagamento.getId_especie_pagamento()));
    }
 
    public void setEspeciePagamento(EspeciePagamento especie_pagamento){
@@ -293,6 +297,6 @@ public class GUICadastroEspeciePagamento extends javax.swing.JInternalFrame {
 
    public void bGravarEspeciePagamentoAddActionListener(ActionListener ouvinte) {
      bGravar.addActionListener(ouvinte);
-     dispose();
+    
    }
 }
