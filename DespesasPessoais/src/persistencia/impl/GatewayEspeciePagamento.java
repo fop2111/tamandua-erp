@@ -48,7 +48,7 @@ public class GatewayEspeciePagamento implements IGatewayEspeciePagamento {
 
             stmt.setLong(1, codigosocio);
             stmt.setString(2, especie_pagamento.getDescricao());
-            stmt.setInt(3, especie_pagamento.getOperacao());
+            stmt.setString(3, especie_pagamento.getOperacao());
             stmt.setString(4, especie_pagamento.getTipo_conta());
 
             stmt.executeUpdate();
@@ -81,7 +81,7 @@ public class GatewayEspeciePagamento implements IGatewayEspeciePagamento {
           stmt = con.prepareStatement(SQL_ALTERARSOCIO);
           stmt.setString(1,   especiepagamento.getDescricao());
           stmt.setString(2,   especiepagamento.getTipo_conta());
-          stmt.setInt(3, especiepagamento.getOperacao());
+          stmt.setString(3, especiepagamento.getOperacao());
           stmt.setInt(4, especiepagamento.getId_especie_pagamento());
           stmt.executeUpdate();
          } catch (SQLException exc) {

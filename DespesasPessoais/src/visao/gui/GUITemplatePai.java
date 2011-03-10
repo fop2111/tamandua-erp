@@ -352,7 +352,7 @@ public class GUITemplatePai extends javax.swing.JInternalFrame {
         EspeciePagamento especiepagamento = (EspeciePagamento) resultado.next();
         int   codigo     = especiepagamento.getId_especie_pagamento();
         String descricao = especiepagamento.getDescricao();
-        int operacao = especiepagamento.getOperacao();
+        String operacao = especiepagamento.getOperacao();
         String tipoConta = especiepagamento.getTipo_conta();
 
         Object[] linha = {codigo, descricao, operacao, tipoConta};
