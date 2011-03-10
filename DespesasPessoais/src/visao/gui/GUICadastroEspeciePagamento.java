@@ -145,10 +145,16 @@ public class GUICadastroEspeciePagamento extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(26, 26, 26)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbCodigo)
+                .addContainerGap(272, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
                     .addComponent(jLabel2))
@@ -156,10 +162,8 @@ public class GUICadastroEspeciePagamento extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cbTipoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbOperacao, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(edtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbCodigo))
-                .addContainerGap(100, Short.MAX_VALUE))
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(edtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,9 +171,9 @@ public class GUICadastroEspeciePagamento extends javax.swing.JInternalFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(lbCodigo))
-                .addGap(28, 28, 28)
+                    .addComponent(lbCodigo)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(edtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
@@ -181,7 +185,7 @@ public class GUICadastroEspeciePagamento extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbTipoConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addContainerGap())
+                .addGap(28, 28, 28))
         );
 
         pack();
@@ -228,12 +232,12 @@ public class GUICadastroEspeciePagamento extends javax.swing.JInternalFrame {
    public EspeciePagamento getEspeciePagamento() throws PessoaisException {
 
  
-       String operacao = (String) cbOperacao.getSelectedItem();
+       int operacao =  cbOperacao.getSelectedIndex();
 
-       if (operacao == "") {
+       if (operacao == 0) {
           throw new PessoaisException("Não foi informada a operacao.");
        } else {
-               especie_pagamento.setOperacao(operacao);
+               especie_pagamento.setOperacao(operacao - 1);
               }
         String descricao = edtDescricao.getText();
 
@@ -264,9 +268,19 @@ public class GUICadastroEspeciePagamento extends javax.swing.JInternalFrame {
    public void exibeDadosEspeciePagamento() {
       limparCampos();
       if (especie_pagamento.getId_especie_pagamento() != Constante.NOVO) {
-          cbOperacao.setSelectedItem(especie_pagamento.getOperacao());
+          cbOperacao.setSelectedIndex(especie_pagamento.getOperacao() + 1);
           edtDescricao.setText(especie_pagamento.getDescricao());
-          cbTipoConta.setSelectedItem(especie_pagamento.getTipo_conta());
+
+          String  tipo_conta =  especie_pagamento.getTipo_conta().trim();
+
+          int i = 0 ;
+          for (TipoContaEspeciePagamento tipo_conta_especie_pagamento : TipoContaEspeciePagamento.values() ){
+             i = i + 1;
+             if (tipo_conta_especie_pagamento.name().trim().equals(tipo_conta))
+                cbTipoConta.setSelectedIndex(i);
+              
+          }
+
           lbCodigo.setText(String.valueOf(especie_pagamento.getId_especie_pagamento()));
        
       }
