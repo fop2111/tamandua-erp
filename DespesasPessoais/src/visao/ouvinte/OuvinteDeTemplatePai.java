@@ -9,6 +9,7 @@ import excecao.PessoaisException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import modelo.controle.ControleEspeciePagamento;
 import modelo.dominio.EspeciePagamento;
@@ -24,10 +25,13 @@ public class OuvinteDeTemplatePai {
 
 
     class OuvintePesquisarEspeciePagamento implements ActionListener {
+
         public void actionPerformed(ActionEvent e) {
         try {
                ControleEspeciePagamento controle = new ControleEspeciePagamento();
                String descricao = guiTemplatePai.getDescricao();
+            
+
                if (descricao != null && !descricao.trim().equals("")) {
 
                   controle.adicionarCriterioDePesquisaContem("descricao", descricao);

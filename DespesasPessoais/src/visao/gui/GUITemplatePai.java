@@ -11,6 +11,7 @@
 
 package visao.gui;
 
+import despesaspessoais.utilitarios.Metodos;
 import excecao.PessoaisException;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
@@ -186,6 +187,11 @@ public class GUITemplatePai extends javax.swing.JInternalFrame {
         });
         gridPrincipal.setCellSelectionEnabled(true);
         gridPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        gridPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                gridPrincipalMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(gridPrincipal);
         gridPrincipal.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
@@ -273,6 +279,8 @@ public class GUITemplatePai extends javax.swing.JInternalFrame {
 
     private void bPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPesquisarActionPerformed
         // TODO add your handling code here:
+        Metodos metodos = new Metodos();
+        metodos.atualizaGrid("table", gridPrincipal);
     }//GEN-LAST:event_bPesquisarActionPerformed
 
     private void bExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bExcluirActionPerformed
@@ -287,6 +295,11 @@ public class GUITemplatePai extends javax.swing.JInternalFrame {
        
         bPesquisar.doClick();
     }//GEN-LAST:event_formComponentShown
+
+    private void gridPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gridPrincipalMouseClicked
+       if (evt.getClickCount() > 1 )
+          bAlterar.doClick();
+    }//GEN-LAST:event_gridPrincipalMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -321,8 +334,9 @@ public class GUITemplatePai extends javax.swing.JInternalFrame {
          OuvinteEspeciePagamento(guiCadastroEspeciePagamento);
          this.getParent().add(guiCadastroEspeciePagamento);
          guiCadastroEspeciePagamento.setPosicao();
-         guiCadastroEspeciePagamento.setVisible(true);
+         guiCadastroEspeciePagamento.setVisible(true);         
          guiCadastroEspeciePagamento.setEspeciePagamento(especiepagamento);
+         
      }try {
             guiCadastroEspeciePagamento.setSelected(true);
           } catch (PropertyVetoException exc) {

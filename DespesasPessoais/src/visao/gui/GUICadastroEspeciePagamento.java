@@ -16,6 +16,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.lang.String;
 import java.lang.String;
+import javax.swing.JFrame;
 import modelo.dominio.EspeciePagamento;
 import modelo.dominio.constante.Constante;
 import modelo.dominio.constante.OperacaoEspeciePagamento;
@@ -71,6 +72,23 @@ public class GUICadastroEspeciePagamento extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setTitle("Cadastro de Espécie");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
                 formComponentResized(evt);
@@ -206,6 +224,10 @@ public class GUICadastroEspeciePagamento extends javax.swing.JInternalFrame {
     private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
      // TODO add your handling code here:
     }//GEN-LAST:event_formComponentResized
+
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+
+    }//GEN-LAST:event_formInternalFrameClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
