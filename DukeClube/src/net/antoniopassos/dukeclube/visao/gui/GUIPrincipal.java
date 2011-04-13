@@ -36,54 +36,84 @@ public class GUIPrincipal extends javax.swing.JFrame {
 
         desktopPane = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
-        fileMenu = new javax.swing.JMenu();
-        openMenuItem = new javax.swing.JMenuItem();
-        saveMenuItem = new javax.swing.JMenuItem();
-        exitMenuItem = new javax.swing.JMenuItem();
-        editMenu = new javax.swing.JMenu();
-        cutMenuItem = new javax.swing.JMenuItem();
-        copyMenuItem = new javax.swing.JMenuItem();
-        helpMenu = new javax.swing.JMenu();
-        contentMenuItem = new javax.swing.JMenuItem();
+        menuArquivo = new javax.swing.JMenu();
+        itemDeMenuImportar = new javax.swing.JMenuItem();
+        itemDeMenuExportar = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        menuPreferencias = new javax.swing.JMenu();
+        itemDeMenuAparencia = new javax.swing.JMenuItem();
+        itemDeMenuDiretorio = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        itemDeMenuSair = new javax.swing.JMenuItem();
+        menuRelatorio = new javax.swing.JMenu();
+        itemDeMenuRelatorioFuncionario = new javax.swing.JMenuItem();
+        itemDeMenuRelatorioSocio = new javax.swing.JMenuItem();
+        menuCadastro = new javax.swing.JMenu();
+        itemDeMenuCadFuncionario = new javax.swing.JMenuItem();
+        itemDeMenuCadSocio = new javax.swing.JMenuItem();
+        menuAjuda = new javax.swing.JMenu();
+        itemDeMenuSobre = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         menuBar.setName("DukeClube"); // NOI18N
 
-        fileMenu.setText("Arquivo");
+        menuArquivo.setText("Arquivo");
 
-        openMenuItem.setText("Importar");
-        fileMenu.add(openMenuItem);
+        itemDeMenuImportar.setText("Importar");
+        menuArquivo.add(itemDeMenuImportar);
 
-        saveMenuItem.setText("Exportar");
-        fileMenu.add(saveMenuItem);
+        itemDeMenuExportar.setText("Exportar");
+        menuArquivo.add(itemDeMenuExportar);
+        menuArquivo.add(jSeparator1);
 
-        exitMenuItem.setText("sair");
-        exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        menuPreferencias.setText("Preferencias");
+
+        itemDeMenuAparencia.setText("Aparencia");
+        menuPreferencias.add(itemDeMenuAparencia);
+
+        itemDeMenuDiretorio.setText("Diretórios");
+        menuPreferencias.add(itemDeMenuDiretorio);
+
+        menuArquivo.add(menuPreferencias);
+        menuArquivo.add(jSeparator2);
+
+        itemDeMenuSair.setText("sair");
+        itemDeMenuSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitMenuItemActionPerformed(evt);
+                itemDeMenuSairActionPerformed(evt);
             }
         });
-        fileMenu.add(exitMenuItem);
+        menuArquivo.add(itemDeMenuSair);
 
-        menuBar.add(fileMenu);
+        menuBar.add(menuArquivo);
 
-        editMenu.setText("Cadastro");
+        menuRelatorio.setText("Relatorio");
 
-        cutMenuItem.setText("Funcinario");
-        editMenu.add(cutMenuItem);
+        itemDeMenuRelatorioFuncionario.setText("Funcionario");
+        menuRelatorio.add(itemDeMenuRelatorioFuncionario);
 
-        copyMenuItem.setText("Socio");
-        editMenu.add(copyMenuItem);
+        itemDeMenuRelatorioSocio.setText("Socio");
+        menuRelatorio.add(itemDeMenuRelatorioSocio);
 
-        menuBar.add(editMenu);
+        menuBar.add(menuRelatorio);
 
-        helpMenu.setText("Ajuda");
+        menuCadastro.setText("Cadastro");
 
-        contentMenuItem.setText("Sobre");
-        helpMenu.add(contentMenuItem);
+        itemDeMenuCadFuncionario.setText("Funcinario");
+        menuCadastro.add(itemDeMenuCadFuncionario);
 
-        menuBar.add(helpMenu);
+        itemDeMenuCadSocio.setText("Socio");
+        menuCadastro.add(itemDeMenuCadSocio);
+
+        menuBar.add(menuCadastro);
+
+        menuAjuda.setText("Ajuda");
+
+        itemDeMenuSobre.setText("Sobre");
+        menuAjuda.add(itemDeMenuSobre);
+
+        menuBar.add(menuAjuda);
 
         setJMenuBar(menuBar);
 
@@ -101,9 +131,9 @@ public class GUIPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
+    private void itemDeMenuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemDeMenuSairActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_exitMenuItemActionPerformed
+    }//GEN-LAST:event_itemDeMenuSairActionPerformed
 
     /**
     * @param args the command line arguments
@@ -117,17 +147,25 @@ public class GUIPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem contentMenuItem;
-    private javax.swing.JMenuItem copyMenuItem;
-    private javax.swing.JMenuItem cutMenuItem;
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JMenu editMenu;
-    private javax.swing.JMenuItem exitMenuItem;
-    private javax.swing.JMenu fileMenu;
-    private javax.swing.JMenu helpMenu;
+    private javax.swing.JMenuItem itemDeMenuAparencia;
+    private javax.swing.JMenuItem itemDeMenuCadFuncionario;
+    private javax.swing.JMenuItem itemDeMenuCadSocio;
+    private javax.swing.JMenuItem itemDeMenuDiretorio;
+    private javax.swing.JMenuItem itemDeMenuExportar;
+    private javax.swing.JMenuItem itemDeMenuImportar;
+    private javax.swing.JMenuItem itemDeMenuRelatorioFuncionario;
+    private javax.swing.JMenuItem itemDeMenuRelatorioSocio;
+    private javax.swing.JMenuItem itemDeMenuSair;
+    private javax.swing.JMenuItem itemDeMenuSobre;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JMenu menuAjuda;
+    private javax.swing.JMenu menuArquivo;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem openMenuItem;
-    private javax.swing.JMenuItem saveMenuItem;
+    private javax.swing.JMenu menuCadastro;
+    private javax.swing.JMenu menuPreferencias;
+    private javax.swing.JMenu menuRelatorio;
     // End of variables declaration//GEN-END:variables
 
 }
