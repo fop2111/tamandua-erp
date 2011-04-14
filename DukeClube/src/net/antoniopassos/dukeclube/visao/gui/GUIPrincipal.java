@@ -111,6 +111,11 @@ public class GUIPrincipal extends javax.swing.JFrame {
         menuAjuda.setText("Ajuda");
 
         itemDeMenuSobre.setText("Sobre");
+        itemDeMenuSobre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemDeMenuSobreActionPerformed(evt);
+            }
+        });
         menuAjuda.add(itemDeMenuSobre);
 
         menuBar.add(menuAjuda);
@@ -135,16 +140,19 @@ public class GUIPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_itemDeMenuSairActionPerformed
 
+    private void itemDeMenuSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemDeMenuSobreActionPerformed
+       if ((guiSobre == null) || (!guiSobre.isVisible())) {
+         guiSobre = new GUISobre();
+         desktopPane.add(guiSobre);
+         guiSobre.setPosicao();
+         guiSobre.setVisible(true);
+       }        // TODO add your handling code here:
+    }//GEN-LAST:event_itemDeMenuSobreActionPerformed
+
     /**
     * @param args the command line arguments
     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUIPrincipal().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
@@ -167,5 +175,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu menuPreferencias;
     private javax.swing.JMenu menuRelatorio;
     // End of variables declaration//GEN-END:variables
+
+    private GUISobre guiSobre;
 
 }
