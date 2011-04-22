@@ -11,6 +11,7 @@
 
 package net.antoniopassos.dukeclube.visao.gui;
 
+import java.beans.PropertyVetoException;
 import javax.swing.JFrame;
 
 /**
@@ -24,6 +25,8 @@ public class GUIPrincipal extends javax.swing.JFrame {
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
+
+    private GUISocios guiSocios;
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -104,6 +107,11 @@ public class GUIPrincipal extends javax.swing.JFrame {
         menuCadastro.add(itemDeMenuCadFuncionario);
 
         itemDeMenuCadSocio.setText("Socio");
+        itemDeMenuCadSocio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemDeMenuCadSocioActionPerformed(evt);
+            }
+        });
         menuCadastro.add(itemDeMenuCadSocio);
 
         menuBar.add(menuCadastro);
@@ -148,6 +156,23 @@ public class GUIPrincipal extends javax.swing.JFrame {
          guiSobre.setVisible(true);
        }        // TODO add your handling code here:
     }//GEN-LAST:event_itemDeMenuSobreActionPerformed
+
+    private void itemDeMenuCadSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemDeMenuCadSocioActionPerformed
+      if ((guiSocios == null) || (!guiSocios.isVisible())) {
+        guiSocios = new GUISocios();
+        desktopPane.add(guiSocios);
+        guiSocios.setPosicao();
+        guiSocios.setVisible(true);
+      }
+      try {
+        guiSocios.setSelected(true);
+      } catch (PropertyVetoException exc) {
+        StringBuffer mensagem = new StringBuffer();
+        mensagem.append("Não foi possível selecionar a janela!");
+        mensagem.append("\nMotivo: " + exc.getMessage());
+        GUIMensagem.exibirMensagem(mensagem.toString(), "DukeClube - Sócios", true);
+      }        // TODO add your handling code here:
+    }//GEN-LAST:event_itemDeMenuCadSocioActionPerformed
 
     /**
     * @param args the command line arguments

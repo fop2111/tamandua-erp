@@ -5,6 +5,7 @@
 
 package net.antoniopassos.dukeclube.modelo.dominio;
 
+import java.util.Date;
 import net.antoniopassos.dukeclube.excecao.DukeClubeException;
 
 /**
@@ -21,8 +22,10 @@ public class Socio {
     private String telefoneCelular;
     private String email;
 
-    public Socio() {        
-    }
+    
+   
+    
+
     /**
      * @return the codigo
      */
@@ -166,5 +169,7 @@ public class Socio {
       long idadeEmDias = idadeEmMilisegundos / (1000 * 60 * 60 * 24);
       return idadeEmDias;
     }
+
+    
 
 }

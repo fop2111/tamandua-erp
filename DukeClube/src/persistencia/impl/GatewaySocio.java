@@ -20,7 +20,7 @@ import persistencia.IGatewaySocio;
 public class GatewaySocio implements IGatewaySocio {
 
     public void gravarSocio(Socio socio) throws DukeClubeException {
-        if (socio.getCodigo() == Constante.NOVO) {
+       if (socio.getCodigo() == Constante.NOVO) {
           incluirSocio(socio);
        }
 
